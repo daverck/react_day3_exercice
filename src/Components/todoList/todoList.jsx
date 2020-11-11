@@ -46,7 +46,7 @@ export default class TodoList extends Component {
 
     func_delete(e, uuid) {
         // let id_task_to_delete = taskList.find(t => t.uuid == uuid);
-        this.setState((state, props) => ({task_list: state.task_list.filter(t => t.uuid != uuid)}));
+        this.setState((state, props) => ({task_list: state.task_list.filter(t => t.props.uuid !== uuid)}));
     }
 
     render() {
