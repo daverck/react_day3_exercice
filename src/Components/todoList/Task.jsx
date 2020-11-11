@@ -15,11 +15,11 @@ export default class Task extends Component {
         // console.log(props);
         try {
             this.state = {
-                uuid: props.uuid || uuid_v4(),
-                name: props.name,
-                priority: props.priority, //PRIORITY.indexof(...)
-                done: props.done,
-                func_delete: props.func_delete
+                // uuid: props.uuid || uuid_v4(),
+                // name: props.name,
+                // priority: props.priority, //PRIORITY.indexof(...)
+                // done: props.done,
+                // func_delete: props.func_delete
            }
         } catch (error) {
             console.log("error");
@@ -44,10 +44,10 @@ export default class Task extends Component {
 
         return (
             <li key={uuid} id={uuid}>
-                <p className={done ? style.task_done : ""}>aaa {name}</p>
+                <p className={done ? style.task_done : ""}>{name}</p>
                 <span>{priority}</span>
-                <button type="button" className="btn btn-primary">Done</button>
-                <button type="button" className="btn btn-danger" onClick={(e) => this.props.func_delete(e, uuid)}>Delete</button>
+                <button type="button" className="btn btn-primary mr-1">Done</button>
+                <button type="button" className="btn btn-danger mr-1" onClick={(e) => func_delete(e, uuid)}>Delete</button>
             </li>
         );
     }

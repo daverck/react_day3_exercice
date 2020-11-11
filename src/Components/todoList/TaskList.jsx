@@ -7,8 +7,8 @@ export default class TaskList extends Component {
         super(props)
 
         this.state = {
-            task_list: props.task_list || [],
-            func_delete: props.func_delete
+            // task_list: props.task_list || [],
+            //func_delete: props.func_delete
         }
         console.log("t");
         console.log(this.props);
@@ -17,9 +17,11 @@ export default class TaskList extends Component {
     }
 
     render() {
-        const {task_list} = this.props; // this.state
+        const {task_list, func_delete} = this.props; //this.state;
         console.log("t2");
+        console.log(this.props);
         console.log(this.state);
+        console.log(task_list);
         return (
             <>
             <p>test render called {uuid_v4()}</p>
@@ -28,12 +30,12 @@ export default class TaskList extends Component {
                     task_list.map((t) => {
                         console.log("test");
                         return (
-                            <Task   key={t.uuid} 
-                                    uuid={t.uuid} 
-                                    name={t.name} 
-                                    priority={t.priority} 
-                                    done={t.done} 
-                                    func_delete={this.func_delete} />
+                            <Task   key={t.props.uuid} 
+                                    uuid={t.props.uuid} 
+                                    name={t.props.name} 
+                                    priority={t.props.priority} 
+                                    done={t.props.done} 
+                                    func_delete={func_delete} />
                         )
                     })
                 }

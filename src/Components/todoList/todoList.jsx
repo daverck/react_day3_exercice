@@ -35,8 +35,6 @@ export default class TodoList extends Component {
         // this.setState((state) => ({task_list: state.task_list.concat([new_task])}));
         // console.log(this.state.task_list.concat([new_task]));
 
-        // this.state.task_list = this.state.task_list.concat([new_task]);
-
         // console.log("handle submit");
         // console.log(this.state.task_list);
     }
@@ -48,7 +46,7 @@ export default class TodoList extends Component {
 
     func_delete(e, uuid) {
         // let id_task_to_delete = taskList.find(t => t.uuid == uuid);
-        this.setState((state, props) => ({task_list: state.taskList.filter(t => t.uuid != uuid)}));
+        this.setState((state, props) => ({task_list: state.task_list.filter(t => t.uuid != uuid)}));
     }
 
     render() {
@@ -75,7 +73,7 @@ export default class TodoList extends Component {
                                 id="new_task_priority"
                                 className="form-control"
                                 onChange={(e) => this.handleChange(e)} >
-                            <option value={PRIORITY.LOW}>{PRIORITY.LOW}</option>
+                            <option selected value={PRIORITY.LOW}>{PRIORITY.LOW}</option>
                             <option value={PRIORITY.MEDIUM}>{PRIORITY.MEDIUM}</option>
                             <option value={PRIORITY.HIGHT}>{PRIORITY.HIGHT}</option>
                         </select>
