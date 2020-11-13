@@ -36,7 +36,7 @@ export default class compteur extends Component {
 
     render() {
         return (
-            <div>
+            <div className="card bg-light m-2">
                 <p>{this.state.cpt}</p>
                 <div>
                     <button type="button" onClick={(e) => this.handleClickReset(e) } className="btn btn-outline-danger mr-1">Reset</button>

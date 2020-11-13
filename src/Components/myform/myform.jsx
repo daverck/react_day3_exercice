@@ -48,7 +48,7 @@ export default class myform extends Component {
         const {name, city, comment} = this.state;
 
         return (
-            <div className="card p-3 bg-light">
+            <div className="card p-3 bg-light m-2">
                 <h1>Form demo</h1>
                 
                 <form action="" onSubmit={(e) => this.handleSubmit(e)} className="mt-5">

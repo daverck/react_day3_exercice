@@ -4,15 +4,13 @@ import {v4 as uuid_v4} from 'uuid'
 
 export const PRIORITY = {  LOW: 'low',
                             MEDIUM: 'medium',
-                            HIGHT: 'hight'
+                            HIGH: 'high'
                         }
 
 export default class Task extends Component {
     constructor(props) {
         super(props);
 
-        // console.log("props");
-        // console.log(props);
         try {
             this.state = {
                 // uuid: props.uuid || uuid_v4(),
@@ -24,30 +22,36 @@ export default class Task extends Component {
         } catch (error) {
             console.log("error");
             console.log(error);
-        } finally {
-            
+        } 
+    }
+
+    renderPriority(){
+        switch(this.props.priority || "low")
+        {
+            case PRIORITY.HIGH:
+                return (<i className="fas fa-exclamation mr-3"></i>);
+                break;
+            case PRIORITY.MEDIUM:
+                return (<i className="fas fa-star mr-3"></i>);
+                break;
+            case PRIORITY.LOW:
+            default:
+                return(<i className="far fa-check-circle mr-3"></i>);
+                break;
         }
-
-
-        // console.log("state");
-        // console.log(this.state);
-
-        // this.render = this.render.bind(this);
     }
     
     render() {
-        const {uuid, name, priority, done, func_delete} = this.props; //this.state;
-        console.log("task render");
-        console.log(this.props);
-        console.log(this.state);
-        console.log("name ? "+name);
+        const {uuid, name, priority, done, func_delete, func_task_done} = this.props;
 
         return (
-            <li key={uuid} id={uuid}>
-                <p className={done ? style.task_done : ""}>{name}</p>
-                <span>{priority}</span>
-                <button type="button" className="btn btn-primary mr-1">Done</button>
-                <button type="button" className="btn btn-danger mr-1" onClick={(e) => func_delete(e, uuid)}>Delete</button>
+            <li key={uuid} id={uuid} className="list-inline d-flex justify-content-between">
+                <p className={"d-inline mr-1 " + (done ? style.task_done : "")} >{name}</p>
+                <span>
+                    { this.renderPriority() }
+                    <button type="button" className="btn btn-primary mr-1" onClick={(e) => func_task_done(e, this)}>Done</button>
+                    <button type="button" className="btn btn-danger mr-1" onClick={(e) => func_delete(e, uuid)}>Delete</button>
+                </span>
             </li>
         );
     }
