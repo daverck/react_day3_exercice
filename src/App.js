@@ -6,11 +6,20 @@ import TodoList from './Components/todoList/TodoList';
 import ColorButton from './Components/exempleHook/ColorButton';
 import DiceGame from './Components/diceGame/DiceGame';
 import HangmanGame from './Components/hangmanGame/HangmanGame';
+import {Fragment} from 'react';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import mainReducer from './store/main-reducer';
+import TodoRedux from './Components/todoRedux/TodoList';
+
+
+const store = createStore(mainReducer);
 
 function App() {
   return (
     <div className="App">
-      {/* header */}
+      {/* menu */}
+
 
       {/* zone de navigation */}
 
@@ -20,7 +29,7 @@ function App() {
               <div className="col-3"></div>
               <div className="col-6">
 
-                <DateDuJour/>
+                {/* <DateDuJour/>
 
                 <Compteur/>
 
@@ -32,7 +41,13 @@ function App() {
 
                 <TodoList />
 
-                <HangmanGame/>
+                <HangmanGame/> */}
+
+                <Fragment>
+                  <Provider store={store} >
+                    <TodoRedux />
+                  </Provider>
+                </Fragment>
 
               </div>
               <div className="col-3"></div>
